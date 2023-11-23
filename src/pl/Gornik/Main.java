@@ -20,42 +20,61 @@ public class Main {
         List<Pracownik> pracownik = new ArrayList<>();
         initializePracownik(pracownik);
 
-        System.out.println("Czy chcesz kontynuować");
-        String wybor = scanner.nextLine();
+
+
+//        System.out.println("Czy chcesz kontynuować");
+//        String wybor = scanner.nextLine();
 //        while(wybor.equalsIgnoreCase("T") || wybor.equalsIgnoreCase("Tak") ||
 //                wybor.equalsIgnoreCase("Yes") || wybor.equalsIgnoreCase("Y")) {
 
-        System.out.println("1. Bilety");
-        System.out.println("2. Trasy");
-        System.out.println("3. Lista pracowników");
 
 
 
+
+        System.out.println("Czy chcesz kontynuować");
+        String wybor = scanner.nextLine();
+        while(wybor.equalsIgnoreCase("T") || wybor.equalsIgnoreCase("Tak") ||
+                wybor.equalsIgnoreCase("Yes") || wybor.equalsIgnoreCase("Y")) {
+            System.out.println("Co chcesz zrobić?");
+            System.out.println("1. Kupić bilet");
+            System.out.println("2. Sprawdzić trasy");
+            System.out.println("3. Zobaczyć listę pracowników");
             int choice = scanner.nextInt();
+            scanner.nextLine();
             switch (choice) {
                 case 1:
-                    System.out.println("Jaki bilet chcesz zobaczyc");
-                    System.out.println("1. Ulgowy");
-                    System.out.println("2. Normalny");
-                    System.out.println("3. Miesieczny");
-                    int bilety = scanner.nextInt();
-                    switch (bilety) {
-                        case 1:
-                            Bilet bilet = new Bilet("ulgowy", Bilet.UstawCene("ulgowy"));
-                            System.out.println(bilet);
-                            break;
-                        case 2:
-                            Bilet bilet2 = new Bilet("normalny", Bilet.UstawCene("normalny"));
-                            System.out.println(bilet2);
-                            break;
-                        case 3:
-                            Bilet bilet3 = new Bilet("miesieczny", Bilet.UstawCene("miesieczn"));
-                            System.out.println(bilet3);
-                            break;
-                        default:
-                            System.out.println("Podaj poprawną wartość");
-                            break;
+                    System.out.println("Jaki bilet chcesz kupić");
+                    String bilety = scanner.nextLine();
+                    if (bilety.equalsIgnoreCase("Miesieczny")|| bilety.equalsIgnoreCase("ulgowy")|| bilety.equalsIgnoreCase("normalny")) {
+                        Bilet bilet = new Bilet(bilety, Bilet.UstawCene(bilety));
+                        System.out.println(bilet);
                     }
+                    else {
+                        System.out.println("Podaj poprawny wynik");
+                    }
+
+//                    System.out.println("1. Ulgowy");
+//                    System.out.println("2. Normalny");
+//                    System.out.println("3. Miesieczny");
+
+
+//                    switch (bilety) {
+//                        case 1:
+//                            Bilet bilet = new Bilet("ulgowy", Bilet.UstawCene("ulgowy"));
+//                            System.out.println(bilet);
+//                            break;
+//                        case 2:
+//                            Bilet bilet2 = new Bilet("normalny", Bilet.UstawCene("normalny"));
+//                            System.out.println(bilet2);
+//                            break;
+//                        case 3:
+//                            Bilet bilet3 = new Bilet("miesieczny", Bilet.UstawCene("miesieczn"));
+//                            System.out.println(bilet3);
+//                            break;
+//                        default:
+//                            System.out.println("Podaj poprawną wartość");
+//                            break;
+//                    }
                     break;
                 case 2:
                     System.out.println("Jaką trase chcesz sprawdzic");
@@ -88,9 +107,10 @@ public class Main {
                     break;
                 default:
                     System.out.println("Podaj poprawną wartość");
+                    break;
             }
         }
-//    }
+    }
 
     public static void initializePracownik(List<Pracownik> pracownik){
         pracownik.add(new Szef(1, "Adam", "Kowalski", 52, 4200));
